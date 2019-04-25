@@ -1,0 +1,17 @@
+<div>
+  <div *ngIf="user$ | async as user;">
+    <div *ngFor="let WatchedVideo of user.WatchedVideos">
+
+        <app-video-view [watchedVideo]="WatchedVideo"></app-video-view>
+
+    </div>
+    <div class="add-fragment-fab">
+        <button mat-fab
+                class="mat-elevation-z10"
+                color="primary"
+                (click)="openDialog()">
+            <mat-icon>play_arrow</mat-icon>
+        </button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,91 @@
+<mat-card class="welcome-card mat-typography">
+    <mat-card-title><h1>Welcome Gomo Team!</h1></mat-card-title>
+    <mat-card-content>
+      <section>
+        <p>I hope today finds you well!</p>
+        <p>For my implementation of the gomo Code Challenge, I've created an Angular 7 application with a Firebase backend and Material front-end.</p>
+        <p>The application simulates 'watching' fragments of a video, and then viewing the watched fragments, the coalesced contiguous fragments, the UVT, and the watched fragments plotted on a timeline.</p>
+        <p>The application should work equally well on a mobile browser as in in a desktop browser.</p>
+        <p>This application is meant to fulfill the requirements of the challenge in an interesting way, not approximate any real-world, end-user functionality.</p>
+        <p>Looking forward to speaking with you further!</p>
+        <p>-Ben Shoemaker</p>
+      </section>
+      <mat-divider></mat-divider>
+      <section>
+        <h2>To get started:</h2>
+        <p>Choose one of the two users in the side navgiation bar, or use these links: (<a [routerLink]="['/user', 'hrCpBF0mnig09E1qPzwz']" target="_blank">User 1</a>, <a [routerLink]="['/user', 'rGJIGqHgM9qn4TaeSLxM']" target="_blank">User 2</a>).</p>
+        <p>Once you're on a user page, use the play 'FAB' button in the bottom right corner to add new fragments.</p>
+        <p>When you've added some fragments, you can click through the tabs to view the resultant data, aggregates, and timeline.</p>
+      </section>
+      <mat-divider></mat-divider>
+      <section>
+          <h2>Known Issues / Concerns:</h2>
+          <p>These are just a few of the issues and concerns I've noticed during development.
+             Most of these issues come down to time constraints.</p>
+          <mat-accordion>
+              <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                  <mat-panel-title>
+                    Testing
+                  </mat-panel-title>
+                  <mat-panel-description>
+                    Testing Issues
+                  </mat-panel-description>
+                </mat-expansion-panel-header>
+                <p>
+                  While I did write a test for the fragment-service and left some tests for the more trivial
+                  controllers, I did not fully test the non-trivial controllers - i.e. add-frag-modal, video-view, etc.
+                </p>
+                <p>
+                  In order to test these controllers properly, we would need to stub all of the firebase services.
+                </p>
+                <p>
+                  This is completely doable, but I've left it outside the scope of this project.
+                </p>
+              </mat-expansion-panel>
+
+              <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                  <mat-panel-title>
+                    Data Validation
+                  </mat-panel-title>
+                  <mat-panel-description>
+                    Data Validation Issues
+                  </mat-panel-description>
+                </mat-expansion-panel-header>
+                <p>I left off some of the data validation on the fragment input form due to time constraints.
+                  That being said, front-end validation is reasonably trivial to implement, especially with the Angular framework.</p>
+                <p>Firebase also has a back-end validation framework that will let us fail transactions that don't conform to given criteria;
+                  again omitted due to time constraints.</p>
+              </mat-expansion-panel>
+
+              <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                  <mat-panel-title>
+                    Timeline Component
+                  </mat-panel-title>
+                  <mat-panel-description>
+                    Timeline Component Issues
+                  </mat-panel-description>
+                </mat-expansion-panel-header>
+                <p>The timeline component is far too highly coupled to our domain model - it really just needs start and length percentages, not VideoFragments.</p>
+                <p>Ideally, we'd probably spin this off into its own module, allowing it to be reused in other projects, and tested without Firebase stubs.</p>
+                <p>Again, decisions were made for efficiency reasons.</p>
+              </mat-expansion-panel>
+
+              <mat-expansion-panel>
+                  <mat-expansion-panel-header>
+                    <mat-panel-title>
+                      Fragment Modal
+                    </mat-panel-title>
+                    <mat-panel-description>
+                      Add Fragment Modal Bug
+                    </mat-panel-description>
+                  </mat-expansion-panel-header>
+                  <p>The add-fragment modal will trigger a failure snackbar if a user clicks off of it - this is a bug.</p>
+                  <p>I should've returned more contextual information out of the modal, rather than a simple boolean value.</p>
+              </mat-expansion-panel>
+            </mat-accordion>
+      </section>
+    </mat-card-content>
+</mat-card>

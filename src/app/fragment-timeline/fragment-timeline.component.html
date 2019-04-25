@@ -1,0 +1,8 @@
+<div class="timeline">
+    <div class="timeline-progress-bar-buffer timeline-progress-bar-element"></div>
+    <span  *ngFor="let FragmentScale of fragmentScales">
+        <div class="timeline-progress-bar-fill timeline-progress-bar-element"
+             [ngStyle]="{'transform': 'translateX(' + FragmentScale.translate + '%) scaleX(' + FragmentScale.scale + ')'}"
+        ></div>
+    </span>
+</div>

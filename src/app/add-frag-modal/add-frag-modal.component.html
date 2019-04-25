@@ -1,0 +1,47 @@
+<h2 mat-dialog-title>Add Video Fragment</h2>
+<form (ngSubmit)="addVideoFragment()" #fragmentForm="ngForm">
+  <mat-dialog-content>
+    <div class="add-frag-form">
+      <mat-form-field>
+        <mat-label>Video</mat-label>
+        <mat-select name="Video" [(ngModel)]="selectedVideo" required>
+          <mat-option *ngFor="let video of videos" [value]="video">{{ video.VideoTitle }} ( {{ video.VideoLength }}ms )</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input
+              name="StartTime"
+              #StartTime="ngModel"
+              type="number"
+              [(ngModel)]="videoFragment.StartTime"
+              matInput
+              placeholder="Start Time"
+              required
+              [disabled]="!selectedVideo"
+              min="0">
+        <mat-error *ngIf="StartTime.invalid">Start Time Required</mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+          <input name="EndTime"
+                #EndTime="ngModel"
+                type="number"
+                [(ngModel)]="videoFragment.EndTime"
+                matInput
+                placeholder="End Time"
+                required
+                [disabled]="!selectedVideo"
+                min="0">
+          <mat-error *ngIf="EndTime.invalid">End Time Required</mat-error>
+      </mat-form-field>
+    </div>
+  </mat-dialog-content>
+  <mat-dialog-actions>
+    <button type="submit"
+            mat-raised-button
+            color="primary"
+            [disabled]="!fragmentForm.form.valid">Add</button>
+  </mat-dialog-actions>
+</form>
+
