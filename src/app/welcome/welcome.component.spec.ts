@@ -1,7 +1,13 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { WelcomeComponent } from './welcome.component';
-import { MatCardModule } from '@angular/material';
+import { MatCardModule, MatDividerModule, MatExpansionModule } from '@angular/material';
+import { Component } from '@angular/core';
+import { RouterTestingModule } from '@angular/router/testing';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+
+@Component({template: ''})
+class EmptyComponent {}
 
 describe('WelcomeComponent', () => {
   let component: WelcomeComponent;
@@ -11,7 +17,12 @@ describe('WelcomeComponent', () => {
     TestBed.configureTestingModule({
       declarations: [ WelcomeComponent ],
       imports: [
-        MatCardModule
+        RouterTestingModule,
+        MatCardModule,
+        MatDividerModule,
+        MatCardModule,
+        MatExpansionModule,
+        NoopAnimationsModule
       ]
     })
     .compileComponents();
